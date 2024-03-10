@@ -32,7 +32,7 @@ namespace AmandsHitmarker
             RoleType = PatchConstants.EftTypes.Single((Type x) => x.GetMethod("IsBoss", flags) != null && x.GetMethod("Init", flags) != null);
             IsBossMethod = RoleType.GetMethod("IsBoss", flags);
             IsFollowerMethod = RoleType.GetMethod("IsFollower", flags);
-            CountAsBossMethod = RoleType.GetMethod("CountAsBoss", flags);
+            CountAsBossMethod = RoleType.GetMethod("CountAsBossForStatistics", flags);
             GetScavRoleKeyMethod = RoleType.GetMethod("GetScavRoleKey", flags);
 
             TransliterateType = PatchConstants.EftTypes.Single(x => x.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance).Any(t => t.Name == "Transliterate"));

@@ -437,7 +437,10 @@ namespace AmandsHitmarker
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(EFT.UI.BattleUIScreen).GetMethod("Show", BindingFlags.Instance | BindingFlags.NonPublic);
+            return typeof(EFT.UI.BattleUIScreen).GetMethod("Show", BindingFlags.Instance | BindingFlags.Public,
+        null,
+        new Type[] { typeof(GamePlayerOwner) },
+        null);
         }
         [PatchPostfix]
         private static void PatchPostFix(ref EFT.UI.BattleUIScreen __instance)
@@ -528,7 +531,7 @@ namespace AmandsHitmarker
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(Player).GetMethod("ProceedDamageThroughArmor", BindingFlags.Instance | BindingFlags.NonPublic);
+            return typeof(Player).GetMethod("ProceedDamageThroughArmor", BindingFlags.Instance | BindingFlags.Public);
         }
         [PatchPrefix]
         private static void PatchPrefix(ref Player __instance, DamageInfo damageInfo)
@@ -584,7 +587,7 @@ namespace AmandsHitmarker
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(Player).GetMethod("OnBeenKilledByAggressor", BindingFlags.Instance | BindingFlags.NonPublic);
+            return typeof(Player).GetMethod("OnBeenKilledByAggressor", BindingFlags.Instance | BindingFlags.Public);
         }
         [PatchPostfix]
         private static void PatchPostFix(ref Player __instance, Player aggressor, DamageInfo damageInfo, EBodyPart bodyPart, EDamageType lethalDamageType)
